@@ -1,19 +1,23 @@
-import React,{useEffect} from "react";
+import React, {useEffect} from "react";
 import {useContextDispatch, useContextState} from "../../context";
 import {loadGetInitialProps} from "next/dist/next-server/lib/utils";
 
 const Filter = ({filterList}) => {
     const dispatch = useContextDispatch();
     const selector = useContextState();
-    console.log(selector.filter);
+        console.log(selector);
 
     function test(e) {
+
         if (e.target.checked) {
             let checkedInputData = {
-                location: e.target.value
+                type: e.target.name,
+                name: e.target.value,
+                isChecked: e.target.checked
             };
-            dispatch({type: "ADD", payload: checkedInputData});
+            dispatch({type: "ADD_ITEM", payload: checkedInputData});
         } else {
+            console.log("unchecked")
 
         }
     }
@@ -24,15 +28,14 @@ const Filter = ({filterList}) => {
                 (item, index) => (
                     <div key={index}>
                         <h5>{item.displayName}</h5>
-                        {item.items.map((i, index) => (
-                            <div>
-                                <input type="checkbox" id={i}
-                                       value={i}
+                        {item.items.map((i, l) => (
+                            <div key={i.name}>
+                                <input type="checkbox" id={i.name}
+                                       value={i.name}
                                        name={item.name}
-                                       // checked={selector.filter.item.name}
-                                       onClick={(e) => test(e)}/>
-                                <label htmlFor={i}>{i}</label>
-                                <p>{selector.filter[`${item.name[0]}`]}</p>
+                                       onChange={(e) => test(e)}/>
+                                <label htmlFor={i.name}>{i.name}</label>
+
                             </div>
                         ))}
                     </div>

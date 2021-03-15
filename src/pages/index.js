@@ -7,19 +7,34 @@ import {useContextState} from "../context";
 const Home = () => {
     const data = [{
         name: "location",
-        displayName: "موقعیعت",
+        displayName: "مکان",
         items: [
-            "تهران",
-            "البرز",
-            "قم"
+            {
+                name: "تهران",
+                isChecked: false
+            },
+            {
+                name: "البرز",
+                isChecked: false
+            },
+            {
+                name: "قم",
+                isChecked: false
+            },
         ]
     }];
     const data2 = [{
         name: "category",
         displayName: "دسته بندی",
         items: [
-            "برنامه نویس",
-            "مدیر پروژه",
+            {
+                name: "برنامه نویس",
+                isChecked: false
+            },
+            {
+                name: "مدیر پروژه",
+                isChecked: false
+            },
         ]
     }];
 

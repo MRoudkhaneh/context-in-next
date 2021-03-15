@@ -7,10 +7,13 @@ const DispatchContext = createContext();
 
 
 const initialState = {
-    filter: {
-        location: ["تهران","شیراز"],
-        category: []
-    }
+    filters: [
+        {
+            type: "location",
+            name: "تهران",
+            isChecked: true
+        }
+    ]
 };
 
 
